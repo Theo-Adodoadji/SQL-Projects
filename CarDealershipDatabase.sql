@@ -1,4 +1,6 @@
 CREATE DATABASE cardealership;
+Use cardealership;
+
 
 CREATE TABLE Dealerships(
 	dealership_id int auto_increment not null primary key,
@@ -6,8 +8,7 @@ CREATE TABLE Dealerships(
     address varchar(50) not null,
     phone varchar(12) not null
 );
-Drop TABLE Dealerships;
-Use cardealership;
+
 
 CREATE TABLE Vehicles(
 	vin varchar(10) primary key,
@@ -27,25 +28,26 @@ CREATE TABLE Inventory(
 );
 
 CREATE TABLE Sales_contracts(
-	dealership_id int auto_increment not null,
+	dealership_id int auto_increment,
     vin varchar(10),
+	sale_date varchar(20),
     FOREIGN KEY (dealership_id) REFERENCES Dealerships(dealership_id),
-	FOREIGN KEY (vin) REFERENCES Vehicles(vin),
-    sale_date varchar(10)
+	FOREIGN KEY (vin) REFERENCES Vehicles(vin)
+   
 );
 
 -- Adding more entries to Dealerships table
-INSERT INTO Dealerships (fullname, address, phone) 
-VALUES ('Auto Center', '567 Pine St', '111-222-3333'),
-    ('Hop Motors', '890 Cedar Ave', '444-555-6666'),
-    ('Hop Car Sales Industries', '901 Oakwood Blvd', '777-888-9999'),
-    ('Hopppp Dealership', '234 Maple Ln', '123-987-4567'),
-    ('Hoppie Auto Group', '345 Elm St', '987-654-3210'),
-    ('Hopsieeeee Motors', '678 Walnut Ave', '111-222-3333'),
-    ('Hop Hop Car Sales', '432 Birch Blvd', '444-555-6666'),
-    ('Hip Hop Auto Center', '567 Oak Ave', '777-888-9999'),
-    ('Hopppppieeee Dealership', '789 Pine St', '123-987-4567'),
-    ('Hop Hop Scotch Auto Group', '890 Maple Ln', '987-654-3210');
+INSERT INTO Dealerships (dealership_id, fullname, address, phone) 
+VALUES (4, 'Auto Center', '567 Pine St', '111-222-3333'),
+    (5, 'Hop Motors', '890 Cedar Ave', '444-555-6666'),
+    (6, 'Hop Car Sales Industries', '901 Oakwood Blvd', '777-888-9999'),
+    (7, 'Hopppp Dealership', '234 Maple Ln', '123-987-4567'),
+    (8, 'Hoppie Auto Group', '345 Elm St', '987-654-3210'),
+    (9, 'Hopsieeeee Motors', '678 Walnut Ave', '111-222-3333'),
+    (10, 'Hop Hop Car Sales', '432 Birch Blvd', '444-555-6666'),
+    (1, 'Hip Hop Auto CenVehiclester', '567 Oak Ave', '777-888-9999'),
+    (2, 'Hopppppieeee Dealership', '789 Pine St', '123-987-4567'),
+    (3, 'Hop Hop Scotch Auto Group', '890 Maple Ln', '987-654-3210');
 
 -- Adding more entries to Vehicles table
 INSERT INTO Vehicles (vin, sold, make, model, color) 
@@ -76,12 +78,14 @@ VALUES (4, 'JKL012'),
 -- Adding more entries to Sales_contracts table
 INSERT INTO Sales_contracts (dealership_id, vin, sale_date) 
 VALUES (4, 'JKL012', '10-19-2023'),
-    (6, 'PQR678', '03-17-2022'),
-    (7, 'STU901', '05-14-2018'),
-    (9, 'EFG567', '09-29-2016'),
-    (10, 'RST890', '03-22-2019'),
-    (2, 'LMN456', '04-22-2023'),
-    (3, 'NOP789', '03-03-2015'),
-    (5, 'MNO345', '08-19-2020'),
-    (8, 'UVW234', '05-06-2013'),
-    (1, 'IJK123', '06-21-2007');
+    (5, 'PQR678', '03-17-2022'),
+    (6, 'STU901', '05-14-2018'),
+    (7, 'EFG567', '09-29-2016'),
+    (8, 'RST890', '03-22-2019'),
+    (9, 'LMN456', '04-22-2023'),
+    (10, 'NOP789', '03-03-2015'),
+    (1, 'MNO345', '08-19-2020'),
+    (2, 'UVW234', '05-06-2013'),
+    (3, 'IJK123', '06-21-2007');
+    
+    
